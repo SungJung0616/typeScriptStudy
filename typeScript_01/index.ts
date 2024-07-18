@@ -45,15 +45,17 @@ function logMessage(message: string, prefix?: string): void {
     console.log(prefix ? `${prefix}: ${message}` : message);
 }
 
-// array 
+// // Define a tuple type 
 type Person = [string, number, boolean];
 let alice: Person = ['Alice', 25, true];
 let bob: Person = ['Bob', 30, false];
 
-// 튜플 요소 접근 및 변경
+// Access and change tuple elements
 let age: number = alice[1];
 let aliceStatus: boolean = alice[2];
 
+
+//Update values (similar concept to pointer)
 alice[1] = 26;  
 alice[2] = false; 
 
