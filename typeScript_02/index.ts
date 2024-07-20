@@ -1,47 +1,53 @@
-//변수 만들때 타입 미리 정하기 애매할때(union type, any, unknown)
+// When it's hard to predefine the type for a variable (union type, any, unknown)
 
-let 이름: string | number = 'kim'
+let lastName: string | number = 'kim'
 
-이름 = 123;
-이름 = 'sung';
+lastName = 123;
+lastName = 'sung';
 
-// 배열 안에 숫자 또는 문자가 들어오게 하려면? number [] | string [] (X)
-let 회원들: (number | string) []  = [1,2,3, '4']
+// To allow both numbers and strings in an array, use: (number | string)[]
+let members: (number | string)[]  = [1, 2, 3, '4']
 
-let object : { a : string | number} = { a : 123 }
+let object: { a: string | number } = { a: 123 }
 
-// any type =  타입실드 해제문법임
-let another : any ;
+// any type = a type shield deactivation syntax
+let another: any;
 
 another = 123;
 another = [];
 
-// any type 과 비슷한 unknown
-let other : unknown;
+// unknown type is similar to any
+let other: unknown;
 other = 123;
 other = {};
 
-let 변수1 : string = other; //에러 발생, unknown은 타입지정은 편하지만 호환은 못하게해줌
-let 변수2: string = another; // 타입 실드 해제여서 아무거나 막 들어올수있음. 조심해야함
+let variable1: string = other; // Error occurs, unknown type is convenient for type declaration but prevents type compatibility
+let variable2: string = another; // Type shield is deactivated so anything can be assigned. Be cautious
 
-//unknown 타입은 사칙연산도 안됨
-//typescript는 연산할때도 number 타입관련해서만 가능함
+// Arithmetic operations are not possible with unknown type
+// TypeScript only allows arithmetic operations with number type
 other - 1
 
-// 타입은 맞는데 +1 이 안되는것?
-// typescript는 엄격한걸 좋아함
+// The type is correct, but why can't I add 1?
+// TypeScript prefers strictness
 
-let 나이 : string | number;
-나이 + 1; // string 타입 + 1(허용)
-        // number 타입 + 1(허용)
-        // string | number  타입 +1(안됨)
-        // string | number 는 새로운 타입을 만드는것임. 
+let age: string | number;
+age + 1; // string type + 1 (allowed)
+        // number type + 1 (allowed)
+        // string | number type + 1 (not allowed)
+        // string | number is a new type itself
 
-let 나이2  : unknown  = 1;
-나이2 - 1; // 마찮가지 타입 자체가 unknown 임
+let age2: unknown = 1;
+age2 - 1; // Same issue, the type itself is unknown
 
-//숙제
-let user : string = 'kim';
-let age : unknown = undefined;
-let married : boolean = false; 
-let 철수 : any[] = [user, age, married];
+// Homework
+let user: string = 'kim';
+let age: undefined | number = undefined;
+let married: boolean = false;
+let chulsoo: (string | undefined | boolean | number)[] = [user, age, married];
+
+let school: { score: (number | boolean)[], teacher: string, friend: string | string } = {
+    score: [100, 97, 84],
+    teacher: 'Phil',
+    friend: 'John'
+}
