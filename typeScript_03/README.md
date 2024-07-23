@@ -6,32 +6,16 @@ This project contains study notes and examples related to TypeScript, focusing o
 
 ### Key Concepts
 
-#### Union Type
+#### Type Assertion
+Type assertion allows you to override the inferred type, using as syntax, which is helpful when you know the type more specifically than TypeScript. It is useful for narrowing down union types or when you are certain about the type.
 
-Use `string | number` to allow a variable to accept both strings and numbers. Similarly, use `(number | string)[]` to allow an array to contain both types.
-
-#### Any Type
-
-The `any` type deactivates TypeScript's type checking, allowing any type to be assigned. This can lead to potential issues and should be used cautiously.
-
-#### Unknown Type
-
-Similar to `any`, but TypeScript requires you to perform type checking before assigning it to other types. This makes `unknown` safer than `any`.
-
-#### Type Compatibility
-
-You can't directly assign an `unknown` type to a specific type without type assertion or checking. Arithmetic operations also require the operands to be `number`.
-
-#### Union Type in Operations
-
-TypeScript is strict about operations on union types. For example, `string | number` cannot directly participate in arithmetic operations because TypeScript cannot determine which type will be used at runtime.
+#### Type Narrowing
+Type narrowing is a technique used to reduce a broader type to a more specific type, making it safe to perform operations on the variable. Common narrowing methods include typeof, instanceof, and property checks.
 
 ## Functions and Exercises
 
-1. **Basic Function with Type Specification**: Demonstrates how to specify types for function parameters and return values.
+1. **Type Assertion in Arrays:**: Demonstrates how to use type assertion to clean an array containing mixed types (numbers and number strings).
    
-2. **Optional Parameters**: Shows how to make a parameter optional using `?`, indicating that the parameter can be `undefined` or the specified type.
+2. **Narrowing with Union Types**: Highlights the importance of narrowing when dealing with union types to ensure safe operations, using typeof and Array.isArray.
    
-3. **Void Type**: Explains the use of `void` to indicate that a function does not return a value and to prevent accidental returns.
-   
-4. **Narrowing**: Highlights the need for type narrowing when dealing with union types to perform operations safely.
+3. **Handling Teacher Subjects**: Provides a practical example of using narrowing to handle objects with union types, ensuring the function returns the correct type based on the input.
