@@ -1,3 +1,4 @@
+// 타입도 변수에 담아쓰세요 type 키워드 써서 & readonly
 // Using type alias to store types
 
 type Animal = number | string | undefined;
